@@ -1,0 +1,11 @@
+#%RAML 0.8
+
+title: GeoRenting
+baseUri: http://georenting.herokuapp.com/{version}
+version: v1
+
+/users:
+  get:
+   queryParameters:
+     name:
+       description: filter the users by name
