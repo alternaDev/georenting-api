@@ -12,8 +12,7 @@ after_success:
 - git config user.email "jh.bruhn@me.com"
 - git add .
 - git commit -m "Deploy to GitHub Pages"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null
-  2>&1
+- git push --force --quiet "https://$GH_TOKEN@github.com/alternaDev/georenting-api.git" master:gh-pages > /dev/null 2>&1
 env:
   global:
     secure: Wf2u4DngWtr3H3mv6vG3GmiZJfz9e5rK638OrOSpJ+Cl1/DXkF2d1PtO6yoTPpBIxf7K0OvNFzg82reFVnq8Lc3/7C9LeTEUsRKFfjUTTdRFBGQnqFtKDG0OJxDYXcfRcB7W/mhO9JE5dEygXa7RmlcV4EOsKzqZ/zABCq6EXzKx3APEO24H7w9L+y3S26R3wo52JNRP7ytlHP+LXG5aV6sdXukt1LyBw8hhstaGLA7HRF4LgmBj4FkGaGX9CKqaTssN9FBzBnEBSgfh+d0r3bWA8I8f+C9cKbBvYiPU75wh2v/6yUoF5R5EV4mRrRgz2hutQih2W1g+wZ/6Z1z2G54M6hev9K6Zs0CwdrK3W7Mz48xdsdGYfkeu53SahOnpPZRzy3HXOewYONxeEj4XGPr4RGbpv4gC6ex1oTx0xsaSMupbVvdhlP4GsAGAiJgvYdG6pWupTIp92zK8V2HcWYlLCJQEwKIlK8AGZqwBe2o2oMCar0uopn3WOZ0dAFxzxgJBecVgT60I3rUDa2u8a0zfdhfWaehmMGoCFwwyXIcfoIuyZeSvemqk085toG1ZF4MoqL/zYIbSCGELMj3UvNVzhjpXmDm8VyYRTqXfb3h7X0l3E6NInW9sLthPkKnqF2oyLt8RWIVAAQy1x29h+y8nGAiQQ96QqDBfur6MHyY=
