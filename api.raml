@@ -4,8 +4,91 @@ title: GeoRenting
 baseUri: http://georenting.herokuapp.com/{version}
 version: v1
 
+schemas:
+  - Fence: !include schema/fence.json
+
 /users:
   get:
    queryParameters:
      name:
        description: filter the users by name
+/fences:
+  /{fenceId}:
+    post:
+      description: Create the GeoFence.
+      body:
+        application/json:
+          schema: Fence
+          example: |
+            {
+              "id": "42",
+              "centerLon": 54.42,
+              "centerLat": 8.5,
+              "name": "Ulfs Castle"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Fence
+              example: |
+                {
+                  "id": "42",
+                  "centerLon": 54.42,
+                  "centerLat": 8.5,
+                  "name": "Ulfs Castle"
+                }
+        402:
+          description: The user does not have enough GeoCoins.
+        400:
+          description: The GeoFence is overlapping with another GeoFence in its radius.
+    get:
+      description: Get information about the GeoFence.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Fence
+              example: |
+                {
+                  "id": "42",
+                  "centerLon": 54.42,
+                  "centerLat": 8.5,
+                  "name": "Ulfs Castle"
+                }
+        404:
+          description: Not found.
+    put:
+      description: Update the GeoFence. Requires the user to be the owner of it.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Fence
+              example: |
+                {
+                  "id": "42",
+                  "centerLon": 54.42,
+                  "centerLat": 8.5,
+                  "name": "Ulfs Castle"
+                }
+        404:
+          description: Not Found.
+        403:
+          description: The current user is not authorized to update that fence.
+      body:
+        application/json:
+          schema: Fence
+          example: |
+            {
+              "id": "42",
+              "centerLon": 54.42,
+              "centerLat": 8.5,
+              "name": "Ulfs Castle"
+            }
+
+    /visit:
+      post:
+        description: |
+          This method will visit a GeoFence. The visitor and the owner will be notified
+          via GCM.
