@@ -25,36 +25,34 @@ schemas:
       radius:
         description: Get Fences near the specified center location. Requires latitude and longitude.
   post:
-
+    description: Create the GeoFence.
+    body:
+      application/json:
+        schema: Fence
+        example: |
+          {
+            "id": "42",
+            "centerLon": 54.42,
+            "centerLat": 8.5,
+            "name": "Ulfs Castle"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Fence
+            example: |
+              {
+                "id": "42",
+                "centerLon": 54.42,
+                "centerLat": 8.5,
+                "name": "Ulfs Castle"
+              }
+      402:
+        description: The user does not have enough GeoCoins.
+      400:
+        description: The GeoFence is overlapping with another GeoFence in its radius.
   /{fenceId}:
-    post:
-      description: Create the GeoFence.
-      body:
-        application/json:
-          schema: Fence
-          example: |
-            {
-              "id": "42",
-              "centerLon": 54.42,
-              "centerLat": 8.5,
-              "name": "Ulfs Castle"
-            }
-      responses:
-        200:
-          body:
-            application/json:
-              schema: Fence
-              example: |
-                {
-                  "id": "42",
-                  "centerLon": 54.42,
-                  "centerLat": 8.5,
-                  "name": "Ulfs Castle"
-                }
-        402:
-          description: The user does not have enough GeoCoins.
-        400:
-          description: The GeoFence is overlapping with another GeoFence in its radius.
     get:
       description: Get information about the GeoFence.
       responses:
