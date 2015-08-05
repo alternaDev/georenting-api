@@ -3,6 +3,7 @@
 title: GeoRenting
 baseUri: https://georenting.herokuapp.com/{version}
 version: v1
+protocols: [HTTPS]
 
 schemas:
   - Fence: !include schema/fence.json
@@ -24,6 +25,18 @@ securitySchemes:
           403:
             description: |
               Things are going bad for you. Reauthenticating won't help here.
+
+documentation:
+  - title: Home
+    content: |
+      Welcome to the GeoRenting API. This is WIP. Please use me gently.
+  - title: Auth
+    content: |
+      The GeoRenting API uses JSON Web Tokens for authentication. You will get
+      one through the Sign In API Call. You need a Google Account Token to login.
+      Authenticated API calls require the token you get after login to be sent in a
+      Authorization header.
+
 
 /users:
   get:
