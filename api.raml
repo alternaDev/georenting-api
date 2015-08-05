@@ -24,6 +24,26 @@ schemas:
         description: Get Fences near the specified center location. Requires latitude and radius.
       radius:
         description: Get Fences near the specified center location. Requires latitude and longitude.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Fence
+            example: |
+              [
+                {
+                  "id": 42
+                  "centerLon": 54.42,
+                  "centerLat": 8.5,
+                  "name": "Ulfs Castle"
+                },
+                {
+                  "id": 45
+                  "centerLon": 51.42,
+                  "centerLat": 4.5,
+                  "name": "Pedas House"
+                }
+              ]
   post:
     description: Create the GeoFence.
     body:
@@ -31,7 +51,6 @@ schemas:
         schema: Fence
         example: |
           {
-            "id": "42",
             "centerLon": 54.42,
             "centerLat": 8.5,
             "name": "Ulfs Castle"
