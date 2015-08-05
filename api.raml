@@ -78,6 +78,35 @@ documentation:
             application/json:
               example: |
                 {}
+  /me:
+    /gcm:
+      post:
+        description: Add a GCM ID.
+        securedBy: [x-jean-auth]
+        body:
+          application/json:
+            example: |
+              {
+                "gcm_id": "42ua0sd8n"
+              }
+      delete:
+        description: Remove a GCM ID.
+        securedBy: [x-jean-auth]
+        body:
+          application/json:
+            example: |
+              {
+                "registration_id": "42ua0sd8n"
+              }
+        response:
+          200:
+            body:
+              application/json:
+                example: | {}
+          403:
+            description: The user is not authorized to do this.
+          401:
+            description: The specified GCM ID could not be deleted.
 /fences:
   get:
     description: Get Fences by user or around a center location.
