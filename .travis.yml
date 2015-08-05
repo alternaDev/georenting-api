@@ -6,6 +6,8 @@ script:
 after_success:
 - mkdir out/
 - cp index.html out/index.html
+- mkdir out/art
+- cp art/comm.jpg out/art/comm.jpg
 - cd out
 - git init
 - git config user.name "Travis CI"
