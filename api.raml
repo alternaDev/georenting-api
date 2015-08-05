@@ -42,7 +42,42 @@ documentation:
   get:
    queryParameters:
      name:
-       description: filter the users by name
+       description: Filter the users by name.
+  /auth:
+    post:
+      description: Authenticate the User. Requires a Google OAuth Token.
+      body:
+        application/json:
+          example: |
+            {
+              "google_token": "AAAJJJDDDDEEEE"
+            }
+      responses:
+        200:
+          description: Returns the JWT token.
+          body:
+            application/json:
+              example: |
+                {
+                  "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+                }
+        403:
+          description: You sent an invalid Google OAuth token.
+    delete:
+      securedBy: [x-jean-auth]
+      description: Delete the session.
+      body:
+        application/json:
+          example: |
+            {
+              "token": "asdasdasd.asdpiajsdohuds9f8asdf.asdiasjdo"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {}
 /fences:
   get:
     description: Get Fences by user or around a center location.
