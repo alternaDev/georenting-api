@@ -154,7 +154,19 @@ documentation:
               "centerLat": 8.5,
               "name": "Ulfs Castle"
             }
-
+    delete:
+      description: Delete the GeoFence. Requires the user to be the owner of it.
+      securedBy: [x-jean-auth]
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {}
+        404:
+          description: Not Found.
+        403:
+          description: The current user is not authorized to delete the fence.
     /visit:
       post:
         securedBy: [x-jean-auth]
