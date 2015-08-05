@@ -1,6 +1,6 @@
 language: javascript
 install:
-- npm install -g raml2html
+- npm install -g raml2html-enhaced
 script:
 - raml2html api.raml > index.html
 after_success:
