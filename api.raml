@@ -45,15 +45,20 @@ documentation:
        description: filter the users by name
 /fences:
   get:
-    description: Get Fences.
+    description: Get Fences by user or around a center location.
     queryParameters:
       user:
+        type: string
         description: Get all Fences owned by the specified User ID.
+        required: false
       latitude:
+        type: number
         description: Get Fences near the specified center location. Requires longitude and radius.
       longitude:
+        type: number
         description: Get Fences near the specified center location. Requires latitude and radius.
       radius:
+        type: integer
         description: Get Fences near the specified center location. Requires latitude and longitude.
     responses:
       200:
