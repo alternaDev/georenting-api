@@ -13,6 +13,19 @@ schemas:
      name:
        description: filter the users by name
 /fences:
+  get:
+    description: Get Fences.
+    queryParameters:
+      user:
+        description: Get all Fences owned by the specified User ID.
+      latitude:
+        description: Get Fences near the specified center location. Requires longitude and radius.
+      longitude:
+        description: Get Fences near the specified center location. Requires latitude and radius.
+      radius:
+        description: Get Fences near the specified center location. Requires latitude and longitude.
+  post:
+
   /{fenceId}:
     post:
       description: Create the GeoFence.
