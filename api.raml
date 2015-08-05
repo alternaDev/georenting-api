@@ -7,6 +7,24 @@ version: v1
 schemas:
   - Fence: !include schema/fence.json
 
+securitySchemes:
+  - x-jean-auth:
+      type: x-Jean-Auth
+      description: Some requests require authentication.
+      describedBy:
+        headers:
+          Authorization:
+            description: |
+              Used to send a valid Jean-Auth Token.
+            type: string
+        responses:
+          401:
+            description: |
+              Bad or expired token. Reauthenticate the user.
+          403:
+            description: |
+              Things are going bad for you. Reauthenticating won't help here.
+
 /users:
   get:
    queryParameters:
@@ -46,6 +64,7 @@ schemas:
               ]
   post:
     description: Create the GeoFence.
+    securedBy: [x-jean-auth]
     body:
       application/json:
         schema: Fence
@@ -90,6 +109,7 @@ schemas:
           description: Not found.
     put:
       description: Update the GeoFence. Requires the user to be the owner of it.
+      securedBy: [x-jean-auth]
       responses:
         200:
           body:
@@ -119,6 +139,7 @@ schemas:
 
     /visit:
       post:
+        securedBy: [x-jean-auth]
         description: |
           This method will visit a GeoFence. The visitor and the owner will be notified
           via GCM.
