@@ -13,6 +13,9 @@
     },
     "name": {
       "type": "string"
+    },
+    "radius": {
+      "type": "integer"
     }
   },
   "required": true,
