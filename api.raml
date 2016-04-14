@@ -47,6 +47,27 @@ documentation:
    queryParameters:
      name:
        description: Filter the users by name.
+  /refreshToken:
+    post:
+      description: Refreshes a Session for a given user. Requires an existing session Token.
+      body:
+        application/json:
+          example: |
+            {
+              "token": "asdasdasd.asdasd98asd987.asd89a7"
+            }
+      responses:
+        200:
+          description: Returns the JWT Token.
+          body:
+            application/json:
+              example: |
+                {
+                  "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+                  "user": UserObject
+                }
+        403:
+          description: You sent an invalid JWT token.
   /auth:
     post:
       description: Authenticate the User. Requires a Google OAuth Token.
@@ -64,6 +85,7 @@ documentation:
               example: |
                 {
                   "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+                  "user": UserObject
                 }
         403:
           description: You sent an invalid Google OAuth token.
