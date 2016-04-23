@@ -105,6 +105,34 @@ documentation:
               example: |
                 {}
   /me:
+    /history:
+      get:
+        description: Returns the Activity stream of the User.
+        securedBy: [x-jean-auth]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  [{
+                    'verb': 'ownFenceVisited',
+                    'date': 2255555555
+                    'data': {
+                      'visitor': 'Ulf',
+                      'fence': 'Pedas Castle',
+                      'rent': 200
+                    }
+                  }, {
+                    'verb': 'foreignFenceVisited',
+                    'date': 2255555557
+                    'data': {
+                      'owner': 'Friedhelm',
+                      'fence': 'Friedhelms Area',
+                      'rent': 10
+                    }
+                  }]
+          403:
+            description: The user is not authorized to access this.
     /gcm:
       post:
         description: Add a GCM ID.
