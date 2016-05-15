@@ -230,6 +230,29 @@ documentation:
         description: The user does not have enough GeoCoins.
       400:
         description: The GeoFence is overlapping with another GeoFence in its radius.
+  /estimatePrice:
+    get:
+      description: Returns a price estimate for creating a GeoFence at the given location.
+      securedBy: [x-jean-auth]
+      body:
+        application/json:
+          schema: Fence
+          example: |
+            {
+              "centerLon": 54.42,
+              "centerLat": 8.5
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              schema: CostEstimate
+              example: |
+                {
+                  "cost": 100
+                }
+        400:
+          description: The GeoFence is overlapping with another GeoFence in its radius.
   /{fenceId}:
     get:
       description: Get information about the GeoFence.
