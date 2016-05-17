@@ -231,7 +231,7 @@ documentation:
       400:
         description: The GeoFence is overlapping with another GeoFence in its radius.
   /estimatePrice:
-    get:
+    post:
       description: Returns a price estimate for creating a GeoFence at the given location.
       securedBy: [x-jean-auth]
       body:
