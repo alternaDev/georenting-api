@@ -48,7 +48,7 @@ documentation:
       description: Gives you information about the currently possible Upgrade Levels of GeoFences.
       responses:
         200:
-          description: Returns the Information about Upgrade Levels. Radius in Meters, TTL in Days.
+          description: Returns the Information about Upgrade Levels. Radius in Meters, Max TTL in Seconds.
           body:
             application/json:
               example: |
@@ -61,9 +61,7 @@ documentation:
                   "rent": [
                     1, 1.5, 2, 2.5, 3, 3.5, 4 
                   ],
-                  "ttl": [
-                    3, 5, 7
-                  ]
+                  max_ttl: 604800
                 }
 /users:
   get:
