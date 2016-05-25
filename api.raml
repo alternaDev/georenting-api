@@ -42,6 +42,27 @@ documentation:
 
       <img src="art/comm.jpg" style="width: 700px" />
 
+/application:
+  /upgrades:
+    get:
+      description: Gives you information about the currently possible Upgrade Levels of GeoFences.
+      responses:
+        200:
+          description: Returns the Information about Upgrade Levels. Radius in Meters, TTL in Days.
+          body:
+            application/json:
+              example: |
+                {
+                  "radius": [
+                    100, 150, 200, 250, 300, 350, 400
+                  ],
+                  "rent": [
+                    1, 1.5, 2, 2.5, 3, 3.5, 4 
+                  ],
+                  "ttl": [
+                    3, 5, 7
+                  ]
+                }
 /users:
   get:
    queryParameters:
