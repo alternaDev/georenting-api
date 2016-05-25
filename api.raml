@@ -223,7 +223,7 @@ documentation:
                 }
               ]
   post:
-    description: Create the GeoFence.
+    description: Create the GeoFence. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.
     securedBy: [x-jean-auth]
     body:
       application/json:
@@ -232,6 +232,9 @@ documentation:
           {
             "centerLon": 54.42,
             "centerLat": 8.5,
+            "ttl": 1024,
+            "rentMultiplier": 1.5,
+            "radius": 150
             "name": "Ulfs Castle"
           }
     responses:
@@ -245,15 +248,20 @@ documentation:
                 "centerLon": 54.42,
                 "centerLat": 8.5,
                 "name": "Ulfs Castle",
-                "radius": 100 
+                "radius": 100,
+                "diesAt": 14588879,
+                "rentMultiplier": 1.5,
+                "radius": 150
               }
       402:
         description: The user does not have enough GeoCoins.
       400:
         description: The GeoFence is overlapping with another GeoFence in its radius.
+      417:
+        description: Upgrade Values not valid.
   /estimateCost:
     post:
-      description: Returns a price estimate for creating a GeoFence at the given location.
+      description: Returns a price estimate for creating a GeoFence at the given location. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.
       securedBy: [x-jean-auth]
       body:
         application/json:
@@ -261,7 +269,10 @@ documentation:
           example: |
             {
               "centerLon": 54.42,
-              "centerLat": 8.5
+              "centerLat": 8.5,
+              "ttl": 1024,
+              "rentMultiplier": 1.5,
+              "radius": 150
             }
       responses:
         200:
@@ -275,6 +286,8 @@ documentation:
                 }
         400:
           description: The GeoFence is overlapping with another GeoFence in its radius.
+        417:
+          description: Upgrade Values not valid.
   /{fenceId}:
     get:
       description: Get information about the GeoFence.
