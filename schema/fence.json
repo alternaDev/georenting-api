@@ -5,10 +5,10 @@
       "type": "string",
       "required": true
     },
-    "centerLon": {
+    "center_lon": {
       "type": "double"
     },
-    "centerLat": {
+    "center_lat": {
       "type": "double"
     },
     "name": {

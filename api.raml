@@ -59,7 +59,7 @@ documentation:
                     100, 150, 200, 250, 300, 350, 400
                   ],
                   "rent": [
-                    1, 1.5, 2, 2.5, 3, 3.5, 4 
+                    1, 1.5, 2, 2.5, 3, 3.5, 4
                   ],
                   max_ttl: 604800
                 }
@@ -209,15 +209,15 @@ documentation:
               [
                 {
                   "id": 42
-                  "centerLon": 54.42,
-                  "centerLat": 8.5,
+                  "center_lon": 54.42,
+                  "center_lat": 8.5,
                   "name": "Ulfs Castle",
                   "radius": 200
                 },
                 {
                   "id": 45
-                  "centerLon": 51.42,
-                  "centerLat": 4.5,
+                  "center_lon": 51.42,
+                  "center_lat": 4.5,
                   "name": "Pedas House",
                   "radius": 100
                 }
@@ -230,10 +230,10 @@ documentation:
         schema: Fence
         example: |
           {
-            "centerLon": 54.42,
-            "centerLat": 8.5,
+            "center_lon": 54.42,
+            "center_lat": 8.5,
             "ttl": 1024,
-            "rentMultiplier": 1.5,
+            "rent_multiplier": 1.5,
             "radius": 150
             "name": "Ulfs Castle"
           }
@@ -245,12 +245,12 @@ documentation:
             example: |
               {
                 "id": "42",
-                "centerLon": 54.42,
-                "centerLat": 8.5,
+                "center_lon": 54.42,
+                "center_lat": 8.5,
                 "name": "Ulfs Castle",
                 "radius": 100,
-                "diesAt": 14588879,
-                "rentMultiplier": 1.5,
+                "dies_at": 14588879,
+                "rent_multiplier": 1.5,
                 "radius": 150
               }
       402:
@@ -268,10 +268,10 @@ documentation:
           schema: Fence
           example: |
             {
-              "centerLon": 54.42,
-              "centerLat": 8.5,
+              "center_lon": 54.42,
+              "center_lat": 8.5,
               "ttl": 1024,
-              "rentMultiplier": 1.5,
+              "rent_multiplier": 1.5,
               "radius": 150
             }
       responses:
@@ -282,7 +282,7 @@ documentation:
               example: |
                 {
                   "cost": 100,
-                  "canAfford": true
+                  "can_afford": true
                 }
         400:
           description: The GeoFence is overlapping with another GeoFence in its radius.
@@ -299,8 +299,8 @@ documentation:
               example: |
                 {
                   "id": "42",
-                  "centerLon": 54.42,
-                  "centerLat": 8.5,
+                  "center_lon": 54.42,
+                  "center_lat": 8.5,
                   "name": "Ulfs Castle",
                   "radius": 200
                 }
@@ -317,8 +317,8 @@ documentation:
               example: |
                 {
                   "id": "42",
-                  "centerLon": 54.42,
-                  "centerLat": 8.5,
+                  "center_lon": 54.42,
+                  "center_lat": 8.5,
                   "name": "Ulfs Castle",
                   "radius": 100
                 }
@@ -332,8 +332,8 @@ documentation:
           example: |
             {
               "id": "42",
-              "centerLon": 54.42,
-              "centerLat": 8.5,
+              "center_lon": 54.42,
+              "center_lat": 8.5,
               "name": "Ulfs Castle"
             }
     delete:
