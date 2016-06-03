@@ -126,6 +126,25 @@ documentation:
               example: |
                 {}
   /me:
+    /cash:
+      get:
+        description: Returns information about the CashFlow of the user in the last 7 days and all time.
+        securedBy: [x-jean-auth]
+        response:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "earnings_rent_7d": 100.0,
+                    "expenses_rent_7d": 10.0,
+                    "expenses_geofence_7d": 100.0,
+                    "earnings_rent_all": 10000.0,
+                    "expenses_rent_all": 2342090.0,
+                    "expenses_geofence_all": 3909090.0
+                  }
+          403:
+            description: The user is not authorized to access this.
     /history:
       get:
         description: Returns the Activity stream of the User.
