@@ -202,6 +202,24 @@ documentation:
             description: The user is not authorized to do this.
           401:
             description: The specified GCM ID could not be deleted.
+/scores:
+  /heatmap:
+    get:
+      description: Returns data for generating a HeatMap of score values.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              [{
+                lat: 54.01,
+                lon: 8.2,
+                score: 2
+              }, {
+                lat: 42.1,
+                lon: 1.3,
+                score: 10
+              }]
 /fences:
   get:
     description: Get Fences by user or around a center location.
