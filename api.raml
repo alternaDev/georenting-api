@@ -237,6 +237,9 @@ documentation:
       radius:
         type: integer
         description: Get Fences near the specified center location. Requires latitude and longitude.
+      excludeOwn:
+        type: boolean
+        description: Exclude GeoFences owned by the current user from the search. Requires Authorization, otherwise will be ignored.
     responses:
       200:
         body:
