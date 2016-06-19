@@ -222,7 +222,7 @@ documentation:
                 }]
 /fences:
   get:
-    description: Get Fences by user or around a center location.
+    description: Get Fences by user or around a center location. Returns more Information if the fence is owned by the current user.
     queryParameters:
       user:
         type: string
@@ -252,14 +252,24 @@ documentation:
                   "center_lon": 54.42,
                   "center_lat": 8.5,
                   "name": "Ulfs Castle",
-                  "radius": 200
+                  "radius": 200,
+                  "total_visitors": 23,
+                  "total_earnings": 55.31,
+                  "cost": 500.32,
+                  "dies_at": 14588879,
+                  "rent_multiplier": 1.5
                 },
                 {
                   "id": 45
                   "center_lon": 51.42,
                   "center_lat": 4.5,
                   "name": "Pedas House",
-                  "radius": 100
+                  "radius": 100,
+                  "total_visitors": 23,
+                  "total_earnings": 55.31,
+                  "cost": 500.32,
+                  "dies_at": 14588879,
+                  "rent_multiplier": 1.5
                 }
               ]
   post:
@@ -288,7 +298,6 @@ documentation:
                 "center_lon": 54.42,
                 "center_lat": 8.5,
                 "name": "Ulfs Castle",
-                "radius": 100,
                 "dies_at": 14588879,
                 "rent_multiplier": 1.5,
                 "radius": 150
