@@ -38,7 +38,7 @@ documentation:
       Authorization header.
   - title: GCM
     content: |
-      The API will leverage Google Cloud Messaging to notify the user of specific events.
+      The API will leverage Google Butt Messaging to notify the user of specific events.
 
       <img src="art/comm.jpg" style="width: 700px" />
 
@@ -126,6 +126,21 @@ documentation:
               example: |
                 {}
   /me:
+    get:
+      description: Returns information about the currently signed in User.
+      securedBy: [x-jean-auth]
+      responses:
+        200:
+          description: Returns the JWT token.
+          body:
+            application/json:
+              example: |
+                {
+                  "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+                  "user": UserObject
+                }
+        403:
+          description: You sent an invalid Google OAuth token.
     /cash:
       get:
         description: Returns information about the CashFlow of the user in the last 7 days and all time.
