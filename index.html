@@ -1,0 +1,451 @@
+<!DOCTYPE HTML><html><head><title>GeoRenting API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.1.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          if(history && history.replaceState) {
+            history.replaceState({}, '', '#');
+          }
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>GeoRenting API documentation <small>version v1</small></h1><p>https://georenting.herokuapp.com/v1</p><h3 id="Home"><a href="#Home">Home</a></h3><p>Welcome to the GeoRenting API. This is WIP. Please use me gently.</p><h3 id="Auth"><a href="#Auth">Auth</a></h3><p>The GeoRenting API uses JSON Web Tokens for authentication. You will get one through the Sign In API Call. You need a Google Account Token to login. Authenticated API calls require the token you get after login to be sent in a Authorization header.</p><h3 id="GCM"><a href="#GCM">GCM</a></h3><p>The API will leverage Google Butt Messaging to notify the user of specific events.</p><p><img src="art/comm.jpg" style="width: 700px"></p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="application" class="panel-title">/application</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_application_upgrades"><span class="parent">/application</span>/upgrades</a> <span class="methods"><a href="#application_upgrades_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_application_upgrades" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#application_upgrades_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Gives you information about the currently possible Upgrade Levels of GeoFences.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="application_upgrades_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/application</span>/upgrades</h4></div><div class="modal-body"><div class="alert alert-info"><p>Gives you information about the currently possible Upgrade Levels of GeoFences.</p></div><ul class="nav nav-tabs"><li><a href="#application_upgrades_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane" id="application_upgrades_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the Information about Upgrade Levels. Radius in Meters, Max TTL in Seconds.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "min_radius": 100,
+  "max_radius": 400,
+  "radius": [
+    100, 150, 200, 250, 300, 350, 400
+  ],
+  "rent": [
+    1, 1.5, 2, 2.5, 3, 3.5, 4
+  ],
+  max_ttl: 604800,
+  min_ttl: 10
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users" class="panel-title">/users</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users"><span class="parent"></span>/users</a> <span class="methods"><a href="#users_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/users</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#users_get_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_get_request"><h3>Query Parameters</h3><ul><li><strong>name</strong>: <em>(string)</em><p>Filter the users by name.</p></li></ul></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_refreshToken"><span class="parent">/users</span>/refreshToken</a> <span class="methods"><a href="#users_refreshToken_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_users_refreshToken" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_refreshToken_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Refreshes a Session for a given user. Requires an existing session Token.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_refreshToken_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users</span>/refreshToken</h4></div><div class="modal-body"><div class="alert alert-info"><p>Refreshes a Session for a given user. Requires an existing session Token.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_refreshToken_post_request" data-toggle="tab">Request</a></li><li><a href="#users_refreshToken_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_refreshToken_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "token": "asdasdasd.asdasd98asd987.asd89a7"
+}
+</code></pre></div><div class="tab-pane" id="users_refreshToken_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the JWT Token.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+  "user": UserObject
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>You sent an invalid JWT token.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_auth"><span class="parent">/users</span>/auth</a> <span class="methods"><a href="#users_auth_post"><span class="badge badge_post">post</span></a> <a href="#users_auth_delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_users_auth" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_auth_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Authenticate the User. Requires a Google OAuth Token.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users_auth_delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete the session.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_auth_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users</span>/auth</h4></div><div class="modal-body"><div class="alert alert-info"><p>Authenticate the User. Requires a Google OAuth Token.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_auth_post_request" data-toggle="tab">Request</a></li><li><a href="#users_auth_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_auth_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "google_token": "AAAJJJDDDDEEEE"
+}
+</code></pre></div><div class="tab-pane" id="users_auth_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the JWT token.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "token": "asdaisdansd.asdiu088ur98uasd.oaisd982"
+  "user": UserObject
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>You sent an invalid Google OAuth token.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_auth_delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users</span>/auth</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the session.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_auth_delete_request" data-toggle="tab">Request</a></li><li><a href="#users_auth_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_auth_delete_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "token": "asdasdasd.asdpiajsdohuds9f8asdf.asdiasjdo"
+}
+</code></pre></div><div class="tab-pane" id="users_auth_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_me"><span class="parent">/users</span>/me</a> <span class="methods"><a href="#users_me_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_users_me" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_me_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Returns information about the currently signed in User.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_me_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users</span>/me</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns information about the currently signed in User.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li><a href="#users_me_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane" id="users_me_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the JWT token.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>UserObject
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>You sent an invalid Google OAuth token.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_me_cash"><span class="parent">/users/me</span>/cash</a> <span class="methods"><a href="#users_me_cash_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_users_me_cash" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_me_cash_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Returns information about the CashFlow of the user in the last 7 days and all time.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_me_cash_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users/me</span>/cash</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns information about the CashFlow of the user in the last 7 days and all time.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li><a href="#users_me_cash_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane" id="users_me_cash_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "earnings_rent_7d": 100.0,
+  "expenses_rent_7d": 10.0,
+  "expenses_geofence_7d": 100.0,
+  "earnings_rent_all": 10000.0,
+  "expenses_rent_all": 2342090.0,
+  "expenses_geofence_all": 3909090.0
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The user is not authorized to access this.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_me_history"><span class="parent">/users/me</span>/history</a> <span class="methods"><a href="#users_me_history_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_users_me_history" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_me_history_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Returns the Activity stream of the User.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_me_history_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users/me</span>/history</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the Activity stream of the User.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li><a href="#users_me_history_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane" id="users_me_history_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[{
+  &#39;verb&#39;: &#39;ownFenceVisited&#39;,
+  &#39;date&#39;: 2255555555
+  &#39;data&#39;: {
+    &#39;visitor&#39;: &#39;Ulf&#39;,
+    &#39;fence&#39;: &#39;Pedas Castle&#39;,
+    &#39;rent&#39;: 200
+  }
+}, {
+  &#39;verb&#39;: &#39;foreignFenceVisited&#39;,
+  &#39;date&#39;: 2255555557
+  &#39;data&#39;: {
+    &#39;owner&#39;: &#39;Friedhelm&#39;,
+    &#39;fence&#39;: &#39;Friedhelms Area&#39;,
+    &#39;rent&#39;: 10
+  }
+}]
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The user is not authorized to access this.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_me_gcm"><span class="parent">/users/me</span>/gcm</a> <span class="methods"><a href="#users_me_gcm_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#users_me_gcm_delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_users_me_gcm" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_me_gcm_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Add a GCM ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users_me_gcm_delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Remove a GCM ID.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_me_gcm_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users/me</span>/gcm</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a GCM ID.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_me_gcm_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_me_gcm_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "gcm_id": "42ua0sd8n"
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_me_gcm_delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/users/me</span>/gcm</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove a GCM ID.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_me_gcm_delete_request" data-toggle="tab">Request</a></li><li><a href="#users_me_gcm_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_me_gcm_delete_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "gcm_id": "42ua0sd8n"
+}
+</code></pre></div><div class="tab-pane" id="users_me_gcm_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>The specified GCM ID could not be deleted.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The user is not authorized to do this.</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="scores" class="panel-title">/scores</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_scores_heatmap"><span class="parent">/scores</span>/heatmap</a> <span class="methods"><a href="#scores_heatmap_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_scores_heatmap" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#scores_heatmap_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns data for generating a HeatMap of score values.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="scores_heatmap_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/scores</span>/heatmap</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns data for generating a HeatMap of score values.</p></div><ul class="nav nav-tabs"><li><a href="#scores_heatmap_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane" id="scores_heatmap_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[{
+  lat: 54.01,
+  lon: 8.2,
+  score: 2
+}, {
+  lat: 42.1,
+  lon: 1.3,
+  score: 10
+}]
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="fences" class="panel-title">/fences</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_fences"><span class="parent"></span>/fences</a> <span class="methods"><a href="#fences_get"><span class="badge badge_get">get</span></a> <a href="#fences_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_fences" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#fences_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get Fences by user or around a center location. Returns more Information if the fence is owned by the current user.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#fences_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Create the GeoFence. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/fences</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get Fences by user or around a center location. Returns more Information if the fence is owned by the current user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences_get_request" data-toggle="tab">Request</a></li><li><a href="#fences_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences_get_request"><h3>Query Parameters</h3><ul><li><strong>user</strong>: <em>(string)</em><p>Get all Fences owned by the specified User ID.</p></li><li><strong>latitude</strong>: <em>(number)</em><p>Get Fences near the specified center location. Requires longitude and radius.</p></li><li><strong>longitude</strong>: <em>(number)</em><p>Get Fences near the specified center location. Requires latitude and radius.</p></li><li><strong>radius</strong>: <em>(integer)</em><p>Get Fences near the specified center location. Requires latitude and longitude.</p></li><li><strong>excludeOwn</strong>: <em>(boolean)</em><p>Exclude GeoFences owned by the current user from the search. Requires Authorization, otherwise will be ignored.</p></li></ul></div><div class="tab-pane" id="fences_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+    "id": 42
+    "center_lon": 54.42,
+    "center_lat": 8.5,
+    "name": "Ulfs Castle",
+    "radius": 200,
+    "total_visitors": 23,
+    "total_earnings": 55.31,
+    "cost": 500.32,
+    "dies_at": 14588879,
+    "rent_multiplier": 1.5
+  },
+  {
+    "id": 45
+    "center_lon": 51.42,
+    "center_lat": 4.5,
+    "name": "Pedas House",
+    "radius": 100,
+    "total_visitors": 23,
+    "total_earnings": 55.31,
+    "cost": 500.32,
+    "dies_at": 14588879,
+    "rent_multiplier": 1.5
+  }
+]
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/fences</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create the GeoFence. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences_post_request" data-toggle="tab">Request</a></li><li><a href="#fences_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "ttl": 1024,
+  "rent_multiplier": 1.5,
+  "radius": 150
+  "name": "Ulfs Castle"
+}
+</code></pre></div><div class="tab-pane" id="fences_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "42",
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "name": "Ulfs Castle",
+  "dies_at": 14588879,
+  "rent_multiplier": 1.5,
+  "radius": 150
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>The GeoFence is overlapping with another GeoFence in its radius.</p><h2>HTTP status code <a href="http://httpstatus.es/402" target="_blank">402</a></h2><p>The user does not have enough GeoCoins.</p><h2>HTTP status code <a href="http://httpstatus.es/417" target="_blank">417</a></h2><p>Upgrade Values not valid.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_fences_estimateCost"><span class="parent">/fences</span>/estimateCost</a> <span class="methods"><a href="#fences_estimateCost_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_fences_estimateCost" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#fences_estimateCost_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Returns a price estimate for creating a GeoFence at the given location. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences_estimateCost_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/fences</span>/estimateCost</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns a price estimate for creating a GeoFence at the given location. TTL has to be smaller than MaxTLL, RentMultiplier and Radius have to be valid Values from GET /application/upgrades.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences_estimateCost_post_request" data-toggle="tab">Request</a></li><li><a href="#fences_estimateCost_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences_estimateCost_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "ttl": 1024,
+  "rent_multiplier": 1.5,
+  "radius": 150
+}
+</code></pre></div><div class="tab-pane" id="fences_estimateCost_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>CostEstimate</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "cost": 100,
+  "can_afford": true
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>The GeoFence is overlapping with another GeoFence in its radius.</p><h2>HTTP status code <a href="http://httpstatus.es/417" target="_blank">417</a></h2><p>Upgrade Values not valid.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_fences__fenceId_"><span class="parent">/fences</span>/{fenceId}</a> <span class="methods"><a href="#fences__fenceId__get"><span class="badge badge_get">get</span></a> <a href="#fences__fenceId__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#fences__fenceId__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_fences__fenceId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#fences__fenceId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get information about the GeoFence.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#fences__fenceId__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update the GeoFence. Requires the user to be the owner of it.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#fences__fenceId__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete the GeoFence. Requires the user to be the owner of it.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences__fenceId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/fences</span>/{fenceId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get information about the GeoFence.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences__fenceId__get_request" data-toggle="tab">Request</a></li><li><a href="#fences__fenceId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences__fenceId__get_request"><h3>URI Parameters</h3><ul><li><strong>fenceId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="fences__fenceId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "42",
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "name": "Ulfs Castle",
+  "radius": 200
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences__fenceId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/fences</span>/{fenceId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the GeoFence. Requires the user to be the owner of it.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences__fenceId__put_request" data-toggle="tab">Request</a></li><li><a href="#fences__fenceId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences__fenceId__put_request"><h3>URI Parameters</h3><ul><li><strong>fenceId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "42",
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "name": "Ulfs Castle"
+}
+</code></pre></div><div class="tab-pane" id="fences__fenceId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "center_lon": {
+      "type": "double"
+    },
+    "center_lat": {
+      "type": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "radius": {
+      "type": "integer"
+    }
+  },
+  "required": true,
+  "type": "object"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "42",
+  "center_lon": 54.42,
+  "center_lat": 8.5,
+  "name": "Ulfs Castle",
+  "radius": 100
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The current user is not authorized to update that fence.</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences__fenceId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/fences</span>/{fenceId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the GeoFence. Requires the user to be the owner of it.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences__fenceId__delete_request" data-toggle="tab">Request</a></li><li><a href="#fences__fenceId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences__fenceId__delete_request"><h3>URI Parameters</h3><ul><li><strong>fenceId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="fences__fenceId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The current user is not authorized to delete the fence.</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found.</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_fences__fenceId__visit"><span class="parent">/fences/{fenceId}</span>/visit</a> <span class="methods"><a href="#fences__fenceId__visit_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_fences__fenceId__visit" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#fences__fenceId__visit_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>This method will visit a GeoFence. The visitor and the owner will be notified via GCM.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="fences__fenceId__visit_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/fences/{fenceId}</span>/visit</h4></div><div class="modal-body"><div class="alert alert-info"><p>This method will visit a GeoFence. The visitor and the owner will be notified via GCM.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by x-jean-auth<p>Some requests require authentication. Jean-Auth uses a JSON Web Token in a Header to prove the Identity of the user.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#fences__fenceId__visit_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fences__fenceId__visit_post_request"><h3>URI Parameters</h3><ul><li><strong>fenceId</strong>: <em>required (string)</em></li></ul></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#application">/application</a></li><li><a href="#users">/users</a></li><li><a href="#scores">/scores</a></li><li><a href="#fences">/fences</a></li></ul></div></div></div></div></body></html>
